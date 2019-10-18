@@ -1,4 +1,4 @@
-package pruebasMaven.modelo;
+package pruebasMaven.modelo.alumno;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
