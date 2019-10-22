@@ -10,31 +10,38 @@ public class Start {
 
 	public static void main(String[] args) {
 
-//		AsignaturaBean lengua = new AsignaturaBean();
-//		lengua.setNombre("Lengua");
-//		
-//		AsignaturaBean mates = new AsignaturaBean();
-//		mates.setNombre("Matematicas");
-//		
-//		CreateAsignatura createAsignatura = new CreateAsignatura();
-//		createAsignatura.create(lengua);
-//		createAsignatura.create(mates);
+		AsignaturaBean lengua = new AsignaturaBean();
+		lengua.setNombre("Lengua");
 		
+		AsignaturaBean mates = new AsignaturaBean();
+		mates.setNombre("Matematicas");
+		
+		CreateAsignatura createAsignatura = new CreateAsignatura();
+		createAsignatura.create(lengua);
+		createAsignatura.create(mates);
+		
+		
+//		AlumnoBean david = new AlumnoBean();
+//		david.setId(1L);
+//		
+//		DeleteAlumno deleteAlumno = new DeleteAlumno();
+//		deleteAlumno.delete(david);
 		
 		AlumnoBean david = new AlumnoBean();
-		david.setId(1L);
+		david.setNombre("David");
+		david.setTelefono("6896044093");
+		david.setCiudad("Corigos");
+		david.setAsignatura(lengua);
 		
-		DeleteAlumno deleteAlumno = new DeleteAlumno();
-		deleteAlumno.delete(david);
+		AlumnoBean ato = new AlumnoBean();
+		ato.setNombre("Ato");
+		ato.setTelefono("698152857");
+		ato.setCiudad("Kusharundo");
+		ato.setAsignatura(mates);
 		
-//		AlumnoBean ascheriit = new AlumnoBean();
-//		ascheriit.setNombre("Ascheriit");
-//		ascheriit.setTelefono("698152857");
-//		ascheriit.setCiudad("Jerb");
-//		
-//		CreateAlumno createAlumno = new CreateAlumno();
-//		createAlumno.create(david);
-//		createAlumno.create(ascheriit);
+		CreateAlumno createAlumno = new CreateAlumno();
+		createAlumno.create(david);
+		createAlumno.create(ato);
 	}
 
 }
