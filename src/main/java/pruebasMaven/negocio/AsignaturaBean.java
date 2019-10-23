@@ -1,10 +1,16 @@
 package pruebasMaven.negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,10 +20,40 @@ public class AsignaturaBean {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
-	private long id;
-	
+	private long id;	
+
 	@Column
 	private String nombre;
+	
+	@ManyToOne
+	@JoinColumn(name="FK_profesor")
+	private ProfesorBean profesor;
+	
+	@OneToMany(mappedBy="asignatura")
+	private List<AlumnoBean> alumnos = new ArrayList<AlumnoBean>();
+		
+	
+	public void addAlumno(AlumnoBean alumno) {
+		
+		if(!alumnos.contains(alumno)) {
+			
+			alumnos.add(alumno);
+			alumno.setAsignatura(this);
+		}
+	}
+	
+	
+	public List<AlumnoBean> getAlumnos() {
+		return alumnos;
+	}
+
+
+	public void setAlumnos(List<AlumnoBean> alumnos) {
+		this.alumnos = alumnos;
+	}
+
+
+
 
 	public long getId() {
 		return id;
@@ -34,4 +70,21 @@ public class AsignaturaBean {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	
+	public ProfesorBean getProfesor() {
+		return profesor;
+	}
+
+	public void setProfesor(ProfesorBean profesor) {
+		this.profesor = profesor;
+	}
+
+
+	@Override
+	public String toString() {
+		return "AsignaturaBean [id=" + id + ", nombre=" + nombre + ", profesor=" + profesor + ", alumnos=" + alumnos
+				+ "]";
+	}
+	
+	
 }

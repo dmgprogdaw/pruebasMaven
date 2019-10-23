@@ -10,9 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="alumno")
+@Table(name="alumnos")
 public class AlumnoBean {
 	
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="idAlumno")
@@ -71,5 +72,12 @@ public class AlumnoBean {
 	
 	public void setAsignatura(AsignaturaBean asignatura) {
 		this.asignatura = asignatura;
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "AlumnoBean [id=" + id + ", nombre=" + nombre + ", telefono=" + telefono + ", ciudad=" + ciudad
+				+ "]";
 	}
 }

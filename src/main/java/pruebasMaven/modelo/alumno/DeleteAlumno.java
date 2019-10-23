@@ -1,24 +1,21 @@
 package pruebasMaven.modelo.alumno;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import pruebasMaven.negocio.AlumnoBean;
+import pruevasMaven.modelo.util.Connection;
 
 public class DeleteAlumno {
 	
 	public void delete(AlumnoBean alumno) {
-
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.david.pruebasMaven.H2");
-		EntityManager entityManager = emf.createEntityManager();
 		
-		entityManager.getTransaction().begin();
-		AlumnoBean alumnoBorrar = entityManager.find(AlumnoBean.class, alumno.getId());
-		entityManager.remove(alumnoBorrar);
-		entityManager.getTransaction().commit();
-		entityManager.close();
+		EntityManager conexion = Connection.getEntityManager();
+		
+		conexion.getTransaction().begin();
+		AlumnoBean alumnoBorrar = conexion.find(AlumnoBean.class, alumno.getId());
+		conexion.remove(alumnoBorrar);
+		conexion.getTransaction().commit();
+		conexion.close();
 				
 	}
 }
