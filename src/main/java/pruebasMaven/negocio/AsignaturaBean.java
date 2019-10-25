@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,7 +30,7 @@ public class AsignaturaBean {
 	@JoinColumn(name="FK_profesor")
 	private ProfesorBean profesor;
 	
-	@OneToMany(mappedBy="asignatura")
+	@ManyToMany(mappedBy = "asignaturas")
 	private List<AlumnoBean> alumnos = new ArrayList<AlumnoBean>();
 		
 	
@@ -38,7 +39,12 @@ public class AsignaturaBean {
 		if(!alumnos.contains(alumno)) {
 			
 			alumnos.add(alumno);
-			alumno.setAsignatura(this);
+			// decirle al alumno que añada esta asignatura
+			List<AsignaturaBean> asignaturas = alumno.getAsignaturas();
+			if(!asignaturas.contains(this)) {
+				
+				asignaturas.add(this);
+			}
 		}
 	}
 	

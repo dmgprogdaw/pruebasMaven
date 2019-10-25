@@ -1,11 +1,15 @@
 package pruebasMaven.negocio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -28,12 +32,19 @@ public class AlumnoBean {
 	@Column
 	private String ciudad;
 	
-	@ManyToOne
-	@JoinColumn(name="FK_asignatura")
-	private AsignaturaBean asignatura;
+	@ManyToMany
+	private List<AsignaturaBean> asignaturas = new ArrayList<AsignaturaBean>();
+
 	
 	
-	
+	public List<AsignaturaBean> getAsignaturas() {
+		return asignaturas;
+	}
+
+	public void setAsignaturas(List<AsignaturaBean> asignaturas) {
+		this.asignaturas = asignaturas;
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -66,13 +77,6 @@ public class AlumnoBean {
 		this.ciudad = ciudad;
 	}
 	
-	public AsignaturaBean getAsignatura() {
-		return asignatura;
-	}
-	
-	public void setAsignatura(AsignaturaBean asignatura) {
-		this.asignatura = asignatura;
-	}
 	
 	
 	@Override
