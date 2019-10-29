@@ -2,14 +2,14 @@ package pruebasMaven.modelo.profesor;
 
 import javax.persistence.EntityManager;
 import pruebasMaven.negocio.ProfesorBean;
-import pruevasMaven.modelo.util.Connection;
+import pruevasMaven.modelo.util.ConnectionEntityManagerFactory;
 
 public class CreateProfesor {
 	
 	
 	public void create(ProfesorBean profesor) {
 
-		EntityManager entityManager = Connection.getEntityManager();
+		EntityManager entityManager = ConnectionEntityManagerFactory.getEntityManagerFactory().createEntityManager();
 		
 		entityManager.getTransaction().begin();;
 		entityManager.persist(profesor);

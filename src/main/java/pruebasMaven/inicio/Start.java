@@ -1,13 +1,12 @@
 package pruebasMaven.inicio;
 
 import pruebasMaven.modelo.alumno.CreateAlumno;
-import pruebasMaven.modelo.alumno.DeleteAlumno;
 import pruebasMaven.modelo.asignatura.CreateAsignatura;
 import pruebasMaven.modelo.profesor.CreateProfesor;
 import pruebasMaven.negocio.AlumnoBean;
 import pruebasMaven.negocio.AsignaturaBean;
 import pruebasMaven.negocio.ProfesorBean;
-import pruevasMaven.modelo.util.Connection;
+import pruevasMaven.modelo.util.ConnectionEntityManagerFactory;
 
 public class Start {
 
@@ -86,10 +85,9 @@ public class Start {
 		marcos.setNombre("Julio");
 		
 		
-		AsignaturaBean nueva = Connection.getEntityManager().find(AsignaturaBean.class, 4L);	
-		System.out.println(nueva);
+
 		
-		Connection.getEntityManager().close();;
+		ConnectionEntityManagerFactory.getEntityManagerFactory().close();
 	}
 
 }

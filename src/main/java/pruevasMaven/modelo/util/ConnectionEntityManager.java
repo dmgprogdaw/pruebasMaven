@@ -4,11 +4,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-public class Connection {
+public class ConnectionEntityManager {
 	
 	private static EntityManager entityManager = null;
 	
-	private Connection() {
+	private ConnectionEntityManager() {
 		
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.david.pruebasMaven.H2");
 		entityManager = emf.createEntityManager();
@@ -19,7 +19,7 @@ public class Connection {
 	public static EntityManager getEntityManager() {
 		if(entityManager == null) {
 			
-			new Connection();
+			new ConnectionEntityManager();
 		}
 		return entityManager;
 	}
